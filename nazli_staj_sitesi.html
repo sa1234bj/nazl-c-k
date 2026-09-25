@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nazlı'nın Staj Merkezi 😂</title>
+<style>
+*{box-sizing:border-box}body{margin:0;min-height:100vh;font-family:Arial,sans-serif;color:#fff;background:linear-gradient(135deg,#141e30,#243b55);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.card{width:min(850px,92%);padding:38px 24px;text-align:center;border-radius:28px;background:#ffffff1c;backdrop-filter:blur(12px);box-shadow:0 20px 60px #0005;border:1px solid #fff3}
+.emoji{font-size:75px;animation:bounce 1.7s infinite}h1{font-size:clamp(32px,7vw,60px);margin:5px 0}.sub{opacity:.8;font-size:18px}.msg{min-height:90px;display:flex;align-items:center;justify-content:center;font-size:21px;font-weight:bold;line-height:1.4}
+button{border:0;border-radius:15px;padding:14px 20px;margin:6px;font-weight:bold;font-size:16px;cursor:pointer;transition:.2s}.a{background:#ffd166}.b{background:white}button:hover{transform:scale(1.07)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:22px}.stat{background:#0003;padding:16px;border-radius:18px}.stat b{display:block;font-size:28px}
+footer{opacity:.6;font-size:12px;margin-top:25px}#fx{position:fixed;inset:0;pointer-events:none}.p{position:absolute;top:-30px;animation:fall 2.5s linear forwards}
+@keyframes bounce{50%{transform:translateY(-18px) rotate(5deg)}}@keyframes fall{to{transform:translateY(110vh) rotate(720deg);opacity:0}}
+.shake{animation:shake .35s}@keyframes shake{25%{transform:translateX(-8px)}50%{transform:translateX(8px)}75%{transform:translateX(-5px)}}
+</style>
+</head>
+<body>
+<div id="fx"></div>
+<div class="card" id="card">
+<div class="emoji">😂</div>
+<h1>Nazlı'nın Staj Merkezi</h1>
+<div class="sub">2 gündür çalışan, 200 gündür eğleniyormuş gibi yapan ekip 😎</div>
+<div class="msg" id="msg">Nazlı, tebrikler! Stajın en önemli özelliğini keşfettin: Çalışırken eğlenmek. 😂</div>
+<button class="a" onclick="randomMsg()">🎲 Rastgele Mesaj</button>
+<button class="b" onclick="chaos()">🚨 KAOSU BAŞLAT</button>
+<div class="stats">
+<div class="stat"><b>2</b>Günlük staj</div>
+<div class="stat"><b>∞</b>Gülme seviyesi</div>
+<div class="stat"><b id="coffee">0</b>Kahve</div>
+</div>
+<footer>Bilimsel kaynak: Stajyer Dedikoduları Araştırma Enstitüsü™</footer>
+</div>
+<script>
+const m=[
+"Nazlı, bugün de çalışıyormuş gibi yapmaya hazır mısın? 😂",
+"⚠️ Sistem uyarısı: Fazla gülme tespit edildi.",
+"Stajyer Nazlı sisteme eklendi. Maaş modülü bulunamadı. 😭",
+"Bugünün görevi: Çalış → Gül → Tekrar çalışıyormuş gibi yap. 😎",
+"Nazlı'nın bilgisayarı: %12 şarj. Nazlı'nın enerjisi: %127.",
+"2 günde ekip ruhu oluştu. 3. gün muhtemelen KAOS. 😂",
+"Toplantı başladı! Gündem: Hiçbir şey. Karar: Kahve. ☕",
+"İş yoğunluğu: 📈 Eğlence seviyesi: 📈📈📈",
+"Stajın gizli kuralı: Gülmeden mesai geçmez.",
+"🚨 Çok önemli: Bu siteyi görünce gülmek zorunludur."
+];
+function randomMsg(){let e=document.getElementById("msg");e.textContent=m[Math.floor(Math.random()*m.length)];e.classList.remove("shake");void e.offsetWidth;e.classList.add("shake");fx(15)}
+function chaos(){document.getElementById("msg").textContent="🚨 KAOS MODU AKTİF! Nazlı artık EĞLENCE SORUMLUSU ilan edildi. 😂";document.getElementById("coffee").textContent=Math.floor(Math.random()*8)+1;fx(70)}
+function fx(n){let box=document.getElementById("fx"),a=["😂","🤣","🎉","⭐","☕","💻","🔥","😎"];for(let i=0;i<n;i++){let x=document.createElement("div");x.className="p";x.textContent=a[Math.floor(Math.random()*a.length)];x.style.left=Math.random()*100+"vw";x.style.fontSize=18+Math.random()*25+"px";x.style.animationDelay=Math.random()+ "s";box.appendChild(x);setTimeout(()=>x.remove(),3500)}}
+</script>
+</body>
+</html>
